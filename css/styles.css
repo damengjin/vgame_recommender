@@ -1,0 +1,227 @@
+html body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#app {
+    width: 100%;
+    overflow: hidden;
+}
+
+.info div {
+    text-align: center;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col {
+    float: left;
+    height: 220px;
+    text-align: center;
+    vertical-align : bottom;
+    position: relative;
+}
+
+.col input {
+    width: 50px;
+    font-size: 20px;
+}
+
+.card-type {
+    overflow: hidden;
+    text-align: center;
+}
+
+.card-type img{
+    width: 100%;
+}
+
+.col img {
+    width: 80%;
+}
+
+.col button {
+    font-size: 20px;
+}
+
+.float-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.note {
+    float: left;
+    width: 24%;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.control-btn {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+}
+
+.box{
+    float: center;
+    width: 80%;
+    height: 80px;
+    border: 1px solid black;
+    font-size: 20px;
+    text-align: center;
+    vertical-align : bottom;
+    position: relative;
+}
+
+.top10 {
+    margin-top:20px;
+}
+
+.top125 {
+    margin-top:25px;
+}
+
+.top15 {
+    margin-top:30px;
+}
+
+.top20 {
+    margin-top:40px;
+}
+
+
+.num-pad {
+    text-align: center;
+}
+
+
+.key {
+    width: 50px;
+    height: 50px;
+}
+
+.key2 {
+    width: 105px;
+    height: 50px;
+}
+
+.key3 {
+    width: 160px;
+    height: 50px;
+}
+
+.note-container {
+    width: 80%;
+    overflow: hidden;
+    -ms-ime-align: center;
+}
+
+.small-note {
+    float: left;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.two-d-bar {
+    height: 10px;
+    width: 100%;
+}
+.left, .right {
+    float: left;
+    width: 49%;
+    height: 100%;
+}
+
+.left-bar {
+    float: right;
+    background: red;
+    width: 70px;
+    height: 20px;
+}
+
+.right-bar {
+    float: left;
+    background: rgb(0, 206, 0);
+    width: 40px;
+    height: 20px;
+}
+
+/* .v-progress-circle {
+    margin: 1rem;
+} */
+
+/* Following is for modal pop up */
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+  }
+  
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  .modal-container {
+    width: 400px;
+    margin: 0px auto;
+    padding: 20px 20px;
+    background-color: rgb(231, 110, 110);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+  .modal-header h3 {
+    margin-top: 0;
+    color: #050101;
+  }
+  
+  .modal-body {
+    margin: 20px 0;
+  }
+  
+  .modal-default-button {
+    float: right;
+  }
+  
+  /*
+   * The following styles are auto-applied to elements with
+   * transition="modal" when their visibility is toggled
+   * by Vue.js.
+   *
+   * You can easily play with the modal transition by editing
+   * these styles.
+   */
+  
+  .modal-enter {
+    opacity: 0;
+  }
+  
+  .modal-leave-active {
+    opacity: 0;
+  }
+  
+  .modal-enter .modal-container,
+  .modal-leave-active .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }

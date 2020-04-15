@@ -1,0 +1,277 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Example</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<body>
+<div id="example">
+
+    <div class="row text-center">
+        <span class="badge badge-pill badge-dark"><h4>Example {{current}}</h4></span>
+    </div><br/>
+
+    <div class="row">
+        <div class="col-sm-1"></div>
+            <div class="row text-center" v-if="show_num_pad">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-4">
+                    <div class="alert alert-info">
+                        To collect: <b>${{price}}</b>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-3">
+                    <div class="alert alert-info">
+                        Last excess change: <b>${{prevExcess}}</b>
+                    </div>
+                </div> -->
+            </div>
+            <div class="col-sm-8" v-if="show_num_pad">
+                <div class="alert text-center">
+                    Payment made by customer: 
+                    <div class="note-container">
+                        <img v-for="n in pay_50" class="small-note" src="img/fifty.jpg" width="180"/>
+                        <img v-for="n in pay_10" class="small-note" src="img/ten.png" width="150"/>
+                        <img v-for="n in pay_5" class="small-note" src="img/five.png" width="140"/>
+                        <img v-for="n in pay_2" class="small-note" src="img/two.png" width="140"/>
+                        <img v-for="n in pay_1" class="small-note" src="img/dollar.png" width="65"/>
+                        <img v-for="n in pay_fiftyc" class="small-note" src="img/fiftyc.png" width="70"/>
+                        <img v-for="n in pay_twentyc" class="small-note" src="img/twentyc.png" width="60"/>
+                        <img v-for="n in pay_tenc" class="small-note" src="img/tenc.png" width="55"/>
+                        <img v-for="n in pay_fivec" class="small-note" src="img/fivec.png" width="50"/>
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+    <div v-if="show_num_pad" class="num-pad">
+        <div class="row text-center">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="alert alert-warning">
+                    Key in the payment paid by customer: <b>S${{num_pad_input}}</b>
+                </div><br/>
+            </div>
+        </div>
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="7" v-on:click="pad_input('7')" />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="8" v-on:click="pad_input('8')" />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="9" v-on:click="pad_input('9')" />
+        <br />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="4" v-on:click="pad_input('4')" />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="5" v-on:click="pad_input('5')" />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="6" v-on:click="pad_input('6')" />
+        <br />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="1" v-on:click="pad_input('1')" />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="2" v-on:click="pad_input('2')" />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="3" v-on:click="pad_input('3')" />
+        <br />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="0" v-on:click="pad_input('0')" />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="." v-on:click="pad_input('.')" />
+        <input class="btn btn-warning btn-circle btn-lg" type="button" value="<" v-on:click="pad_backspace()" />
+        <br />
+        <input class="btn btn-warning btn-lg" type="button" value="Submit" v-on:click="pad_submit()" />
+    </div>
+
+
+        <div v-if="show_notes">
+            <div class="row text-center">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="alert alert-warning">
+                        Change: <b>${{changebypay}}</b>
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row text-center">
+                <button class="btn btn-info" v-on:click="onBack">Go Back</button><br/><br/>
+            </div>
+            <div class="row text-center margin0">
+                    <div class="col-sm-4">
+                        <img src="img/ten.png"/><br/><br/>
+                        <button class="btn btn-danger" v-on:click="sub('ten')">-</button>
+                        <span class="well well-sm">{{ten}}</span>
+                        <button class="btn btn-success" v-on:click="add('ten')">+</button>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="img/five.png"/><br/><br/>
+                        <button class="btn btn-danger" v-on:click="sub('five')">-</button>
+                        <span class="well well-sm">{{five}}</span>
+                        <button class="btn btn-success" v-on:click="add('five')">+</button>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="img/two.png"/><br/><br/>
+                        <button class="btn btn-danger" v-on:click="sub('two')">-</button>
+                        <span class="well well-sm">{{two}}</span>
+                        <button class="btn btn-success" v-on:click="add('two')">+</button>
+                    </div>
+            </div>
+
+            <div class="row backimage">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 text-center">
+                    <img src="img/dollar.png" width="100px"/><br/><br/>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <img class="top10" src="img/fiftyc.png" width="80px"/><br/><br/>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <img class="top125" src="img/twentyc.png" width="75px"/><br/><br/>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <img class="top15" src="img/tenc.png" width="70px"/><br/><br/>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <img class="top20" src="img/fivec.png" width="60px"/><br/><br/>
+                </div>
+                <div class="col-sm-1"></div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 text-center">
+                    <button class="btn btn-danger" v-on:click="sub('one')">-</button>
+                    <span class="well well-sm">{{one}}</span>
+                    <button class="btn btn-success" v-on:click="add('one')">+</button>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <button class="btn btn-danger" v-on:click="sub('fiftyc')">-</button>
+                    <span class="well well-sm">{{fiftyc}}</span>
+                    <button class="btn btn-success" v-on:click="add('fiftyc')">+</button>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <button class="btn btn-danger" v-on:click="sub('twentyc')">-</button>
+                    <span class="well well-sm">{{twentyc}}</span>
+                    <button class="btn btn-success" v-on:click="add('twentyc')">+</button>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <button class="btn btn-danger" v-on:click="sub('tenc')">-</button>
+                    <span class="well well-sm">{{tenc}}</span>
+                    <button class="btn btn-success" v-on:click="add('tenc')">+</button>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <button class="btn btn-danger" v-on:click="sub('fivec')">-</button>
+                    <span class="well well-sm">{{fivec}}</span>
+                    <button class="btn btn-success" v-on:click="add('fivec')">+</button>
+                </div>
+                <div class="col-sm-1"></div>
+
+            </div>
+
+            <br/>
+            <div class="row text-center">
+                <button class="btn btn-info" v-on:click="onSubmit">Submit</button><br/><br/>
+            </div>
+
+            <!-- <div class="row text-center">
+                <button class="btn btn-info" v-on:click="nextpage">End Session</button>
+            </div> -->
+
+        </div>
+
+
+        <div v-if="show_card">
+            <div class="row text-center">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="alert alert-info">
+                        To collect: <b>S$ {{price.toFixed(2)}}</b>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                    <div class="alert alert-success">
+                        Customer pay by <b>{{card_type}}</b> 
+                        <div class="note-container">
+                            <img class="small-note" v-bind:src="'img/' + card_type_img" width="200"/> 
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-3"></div> -->
+                <div class="col-sm-6" style="margin-top: 50px;">
+                        <div class="col-sm-3 card-type">
+                            <label for="visa"><img src="img/visa.jpg"></label><br/>
+                            <input type="radio" id='visa' value="visa" v-model='cardpick' v-on:click='cardCheck("visa")'>
+                        </div>
+                        <div class="col-sm-3 card-type">
+                            <label for="master"><img src="img/master.jpg"/></label><br/>
+                            <input type="radio" id='master' value="master" v-model='cardpick' v-on:click='cardCheck("master")'>
+                        </div>
+                        <div class="col-sm-3 card-type">
+                            <label for="nets"><img src="img/nets.jpg"/></label><br/>
+                            <input type="radio" id='nets' value="nets" v-model='cardpick' v-on:click='cardCheck("nets")'>
+                        </div>
+                        <div class="col-sm-3 card-type">
+                            <label for="cashcard"><img src="img/cashcard.png"/></label><br/>
+                            <input type="radio" id='cashcard' value="cashcard" v-model='cardpick' v-on:click='cardCheck("cashcard")'>
+                        </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div class="alert alert-warning">
+                        Key in the amount to collect: <b>S${{num_pad_input}}</b>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            
+
+            <div class="num-pad">
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="7" v-on:click="pad_input('7')" />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="8" v-on:click="pad_input('8')" />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="9" v-on:click="pad_input('9')" />
+                    <br />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="4" v-on:click="pad_input('4')" />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="5" v-on:click="pad_input('5')" />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="6" v-on:click="pad_input('6')" />
+                    <br />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="1" v-on:click="pad_input('1')" />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="2" v-on:click="pad_input('2')" />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="3" v-on:click="pad_input('3')" />
+                    <br />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="0" v-on:click="pad_input('0')" />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="." v-on:click="pad_input('.')" />
+                    <input class="btn btn-warning btn-circle btn-lg" type="button" value="<" v-on:click="pad_backspace()" />
+                    <br />
+                    <input class="btn btn-warning btn-lg" type="button" value="Submit" v-on:click="pad_submit()" />
+            </div>
+        </div>
+        <footer class="app-footer">
+            <div>
+                <a href="http://www.nus.edu.sg/">NUS Business School</a>
+                <span>&copy; 2019 NUS</span>
+            </div>
+            <div class="ml-auto">
+                <span>Powered by</span>
+                <a href="http://www.nus.edu.sg/">NUS Business School</a>
+            </div>
+        </footer>
+</div>
+  <script src="js/example0.js"></script>
+</body>
+
+</html>
