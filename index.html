@@ -4,20 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <title>Lab Experiment-Card</title>
+    <title>PSP_CS5224_index_page</title>
   </head>
   <body>
-      <div class="jumbotron text-center">
-          <h1> Welcome to the Productivity Research </h1>
-      </div>
-      <div class="row text-center">
-          ID: <input id="idInput" type="text" placeholder="Your ID?"/>
-          <span>&nbsp;</span>
-          <button onclick="SaveID();" class="btn btn-primary">Start</button>
-      </div>
+    <div class="bg"><img src="img/background.jpg" width="100%" height="100%"/></div>
+    <div class="jumbotron text-center">
+        <h1> Welcome to the Video Game Recommender </h1>
+    </div>
+    <div class="row text-center">
+        ID: <input id="idInput" type="text" placeholder="Your Game User ID?"/>
+        <span>&nbsp;</span>
+        <button onclick="SaveID();" class="btn btn-primary">Recommend for Me!</button>
+    </div>
+
+
+<style>
+.bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .5;
+}
+
+
+
+</style>
 
   </body>
 </html>

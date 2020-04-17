@@ -31,15 +31,6 @@ html body {
     font-size: 20px;
 }
 
-.card-type {
-    overflow: hidden;
-    text-align: center;
-}
-
-.card-type img{
-    width: 100%;
-}
-
 .col img {
     width: 80%;
 }
@@ -115,14 +106,75 @@ html body {
 }
 
 .note-container {
-    width: 80%;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     -ms-ime-align: center;
+    float: center;
 }
 
 .small-note {
-    float: left;
+    float: center;
+    height: 100%;
+    width: 100%;
 }
+
+.big-note {
+    height: 100%;
+    width: 100%;
+}
+
+.example {
+    width:15%;
+    display:inline-block;
+    cursor: pointer;
+    height: 300px; 
+    position: relative;
+    overflow: hidden;
+    text-align:center;
+}
+.example .fadedbox {
+    background-color: #666666;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    opacity: 0;
+    width: "100%";
+    /* height: "100%"; */
+    padding: 100px 12px;
+}
+
+.example:hover .fadedbox { opacity: 0.7; }
+.example .text {
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    transform: translateY(30px);
+    -webkit-transform: translateY(30px);
+}
+.example .title {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+}
+.example:hover .title,
+.example:focus .title {
+    opacity: 1;
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+}
+
+
 
 .btn-circle.btn-lg {
     width: 50px;
@@ -132,6 +184,26 @@ html body {
     line-height: 1.33;
     border-radius: 25px;
 }
+
+  
+.btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
 
 .two-d-bar {
     height: 10px;
@@ -160,6 +232,148 @@ html body {
 /* .v-progress-circle {
     margin: 1rem;
 } */
+
+img {
+    /* vertical-align: middle; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+    position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Six columns side by side */
+.column {
+    float: left;
+    width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+    opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}
+
+.mySlides2 {
+    width:28%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    height: 400px; 
+    position: relative;
+    overflow: hidden;
+    text-align:center;
+}
+.mySlides2 .fadedbox {
+    background-color: #666666;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    opacity: 0;
+    width: "100%";
+    padding: 100px 50px;
+}
+
+.mySlides2:hover .fadedbox { opacity: 0.7; }
+.mySlides2 .text {
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    transform: translateY(30px);
+    -webkit-transform: translateY(30px);
+}
+.mySlides2 .title {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    opacity: 0;
+    transition-delay: 0.2s;
+    transition-duration: 0.3s;
+}
+.mySlides2:hover .title,
+.mySlides2:focus .title {
+    opacity: 1;
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+}
 
 /* Following is for modal pop up */
 .modal-mask {

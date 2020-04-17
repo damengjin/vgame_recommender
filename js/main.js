@@ -10,6 +10,6 @@ function SaveID(){
   }
   localStorage.setItem('id', document.getElementById('idInput').value);
   localStorage.setItem('session', 'Card');
-  window.location.href='Adding_numbers5.html';
+  window.location.href='treatment_exercise.html';
   return;
 }
